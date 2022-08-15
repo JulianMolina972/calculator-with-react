@@ -2,53 +2,35 @@ import { useState } from 'react';
 import { Button } from './components/Button';
 import { ButtonClear } from './components/ButtonClear';
 import { Display } from './components/Display';
-import { evaluate, parse } from 'mathjs';
+import { evaluate } from 'mathjs';
 import { ButtonDelete } from './components/ButtonDelete';
 import './App.css';
 
 function App() {
 
   const [input, setInput] = useState('');
-
+    
   const addInput = (value) => {
     setInput(input + value);
   }
   
-  
-  // function cantRepetidos(letras) {
-  //   return letras.split('').filter((c, i, a)=>a.indexOf(c) !== i).length
-  // }
-  
-  // console.log('Caracteres repetidos:', cantRepetidos('AmnAmPP'))
-  
-  // const pares = input
-  // let ocurencias= 0;
-  // const revisados = [];
-  // const caracteresRepetidos = function(str) {
-  //   for (let i=0; i<str.length; i++) {
-  //     if (!revisados.includes(str[i]) && str.indexOf(str[i]) !== str.lastIndexOf(str[i])) {
-  //       revisados.push(str[i]);
-  //       ocurencias = ocurencias+1;
-  //     }
-  //   }
-  // return ocurencias;
-  // }
-  // console.log( revisados ); 
-  // console.log( caracteresRepetidos(pares) );
   const calculateResult = () => {
-    
-    console.log(parse(input));
-    if(input) {
-      // console.log(!evaluate(input))
-      setInput(evaluate(input));
-      // console.log(input);
-    } else {
-      alert('Please enter an expression');
+    try {
+      if(input) {
+        setInput(evaluate(input));
+        
+      } else {
+        alert('Please enter an expression');
+      }
+    } catch (error) {
+      setInput('Syntax Error');
+      setTimeout(() => {
+        setInput('');
+      }, 1500)
     }
+    
   }
-  // console.log(input);
 
-  // if(input === setInput)
 
   const deleteInput = () => {
     setInput(input.slice(0, -1));
