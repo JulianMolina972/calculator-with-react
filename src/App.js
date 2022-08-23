@@ -9,16 +9,18 @@ import './App.css';
 function App() {
 
   const [input, setInput] = useState('');
-    
-  const addInput = (value) => {
-    setInput(input + value);
-  }
   
+
+  const addInput = (value) => {
+    if(input.length < 16) {
+      setInput(input + value);
+    }
+  }
+
   const calculateResult = () => {
     try {
       if(input) {
-        setInput(evaluate(input));
-        
+        setInput(evaluate(input).toString());
       } else {
         alert('Please enter an expression');
       }
@@ -70,7 +72,7 @@ function App() {
           <Button handleClick={addInput} >+</Button>
         </div>
         <div className='row'>
-          <ButtonClear handleClear={() => setInput('')}>
+          <ButtonClear handleClear={() => setInput('')} >
             Clear
           </ButtonClear>
           <Button handleClick={calculateResult}>=</Button>
