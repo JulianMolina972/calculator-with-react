@@ -10,7 +10,7 @@ html, body {
 }
 
 .App {
-  height: 100vh;
+  /* height: 100vh; */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ html, body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 15px;
+  margin: 10px;
 }
 
 .calculator-container {
@@ -41,4 +41,15 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .calculator-container {
+    width: 90%;
+    height: auto;
+    border-radius: 20px;
+  }
+  .App-header{
+    margin: 15px;
+  }
 }

@@ -10,7 +10,6 @@ function App() {
 
   const [input, setInput] = useState('');
   
-
   const addInput = (value) => {
     if(input.length < 16) {
       setInput(input + value);
